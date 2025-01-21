@@ -1,0 +1,30 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block title %}
+    {{ profile_user.username }}
+{% endblock %}
+
+{% block script %}<script src="{% static 'network/profile.js' %}"></script>{% endblock %}
+
+{% block body %}
+    <div class="border-bottom text-center py-5 shadow-sm bg bg-light">
+        <h1>{{ profile_user.username }}</h1>
+        <p class="text-secondary">{{ profile_user.email }}</p>
+    </div>
+
+    <div class="border-bottom row text-center py-2" id="follow_div" data-username="{{ profile_user.username }}">
+        <div class="border-end col-5"><h4>Followers</h4><h5 class="text-secondary" id="follower_count"><!--No. of followers--></h5></div>
+        <div class="col-5"><h4>Following</h4><h5 class="text-secondary" id="following_count"><!--No. of following--></h5></div>
+        {% if profile_user != request.user %}
+            <div class="col-2 pt-1"><button id="follow_btn" class="btn btn-secondary">{{ action }}</button></div>
+        {% endif %}
+    </div>
+
+    <div class="text-center py-3">
+        <h5>Posts</h5>
+    </div>
+    <div id="user_posts_div" class="container w-75" data-username="{{ profile_user.username }}" data-user="{{ request.user.username }}">
+    </div>
+
+{% endblock %}

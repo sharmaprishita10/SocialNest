@@ -1,0 +1,33 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block script %}<script src="{% static 'network/index.js' %}"></script>{% endblock %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+        <div class="container w-75 p-3 my-4 border">
+            <form id="new-post" class="row">
+                <div class="d-flex justify-content-center">
+                    <textarea class="w-75 mb-3 p-2 border rounded" placeholder="Write something you want to share..." id="content"></textarea>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <input class="btn btn-primary rounded-pill" type="submit" value="Post" id="submit-post">
+                </div>
+            </form>
+        </div>
+    {% endif %}
+
+    <div id="all_posts_div" data-user="{{ request.user.username }}" class="container w-75">
+    </div>
+
+    <!--Div that displays a toast-->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div class="toast" role="alert">
+            <div class="toast-body"></div>
+        </div>
+    </div>
+{% endblock %}
