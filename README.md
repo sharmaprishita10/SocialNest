@@ -1,6 +1,6 @@
-# Network
+# SocialNest
 
-Network is a social media web application that allows users to create posts, follow other users, like posts, and view posts from followed users.
+SocialNest is a social media web application that allows users to create posts, follow other users, like posts, and view posts from followed users.
 
 ### Description
 
